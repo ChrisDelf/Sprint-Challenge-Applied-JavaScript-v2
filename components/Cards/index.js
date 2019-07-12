@@ -17,67 +17,92 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
-  const cards = document.querySelector('.cards-container')
+const cards = document.querySelector('.cards-container')
+
+
+
+
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
-  .then(data => {
-    console.log("Success", data.data)
-    const impBootstrap = data.data.articles.bootstrap
-    console.log(impBootstrap)
-    impBootstrap.forEach(bootstrap => {
-    cards.appendChild(createArticles(bootstrap))
+  .then(res => {
 
+    const impArticles = res.data.articles
+    for (topic in impArticles) {
+      console.log(impArticles)
+      impArticles[topic].forEach(article => {
+      cards.appendChild(createArticles(article))
+
+      })
+
+
+
+
+    }
 
     })
 
-  })
 
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
 
-  .then(data => {
-    console.log("Success", data)
-    const impJavaScript = data.data.articles.javascript
-    console.log(impJavaScript)
-    impJavaScript.forEach(javaScript => {
-    cards.appendChild(createArticles(javaScript))
-
-    })
-
-  })
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
-
-  .then(data => {
-    console.log("Success", data)
-    const impTech = data.data.articles.technology
-    console.log(impTech)
-    impTech.forEach(tech => {
-    cards.appendChild(createArticles(tech))
-
-    })
-
-  })
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
-
-  .then(data => {
-    console.log("Success ", data)
-    const impJquery = data.data.articles.jquery
-    impJquery.forEach(jquery => {
-    cards.appendChild(createArticles(jquery))
-
-    })
-
-  })
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
-
-  .then(data => {
-    console.log("Success ", data)
-    const impNode = data.data.articles.node
-    impNode.forEach(node => {
-    cards.appendChild(createArticles(node))
-
-    })
-
-  })
+//------------------------ old code
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
+//   .then(data => {
+//     console.log("Success", data.data.articles)
+//     const impBootstrap = data.data.articles.bootstrap
+//     console.log(impBootstrap)
+//     impBootstrap.forEach(bootstrap => {
+//     cards.appendChild(createArticles(bootstrap))
+//
+//
+//     })
+//
+//   })
+//
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
+//
+//   .then(data => {
+//     console.log("Success", data)
+//     const impJavaScript = data.data.articles.javascript
+//     console.log(impJavaScript)
+//     impJavaScript.forEach(javaScript => {
+//     cards.appendChild(createArticles(javaScript))
+//
+//     })
+//
+//   })
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
+//
+//   .then(data => {
+//     console.log("Success", data)
+//     const impTech = data.data.articles.technology
+//     console.log(impTech)
+//     impTech.forEach(tech => {
+//     cards.appendChild(createArticles(tech))
+//
+//     })
+//
+//   })
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
+//
+//   .then(data => {
+//     console.log("Success ", data)
+//     const impJquery = data.data.articles.jquery
+//     impJquery.forEach(jquery => {
+//     cards.appendChild(createArticles(jquery))
+//
+//     })
+//
+//   })
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
+//
+//   .then(data => {
+//     console.log("Success ", data)
+//     const impNode = data.data.articles.node
+//     impNode.forEach(node => {
+//     cards.appendChild(createArticles(node))
+//
+//     })
+//
+//   })
 
 
 
